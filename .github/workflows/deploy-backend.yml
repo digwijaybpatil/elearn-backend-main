@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
-          source: "publish/*"
+          source: "publish/**"
           target: "/var/www/elearn-backend"
 
       - name: Restart backend service on VM
