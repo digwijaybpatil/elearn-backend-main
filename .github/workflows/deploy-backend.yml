@@ -32,6 +32,7 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           source: "publish/**"
           target: "/var/www/elearn-backend"
+          strip_components: 1
 
       - name: Restart backend service on VM
         uses: appleboy/ssh-action@v0.1.7
