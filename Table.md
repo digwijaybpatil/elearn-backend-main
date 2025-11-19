@@ -1,8 +1,8 @@
 # Create a table in your mysql Database
 
-CREATE TABLE Courses (
+CREATE TABLE IF NOT EXISTS Courses (
     CourseId INT AUTO_INCREMENT PRIMARY KEY,
     CourseName VARCHAR(255) NOT NULL,
     InstructorName VARCHAR(255) NOT NULL,
-    Lessons JSON NOT NULL DEFAULT '[]'
-);
+    Lessons JSON NOT NULL
+);"
