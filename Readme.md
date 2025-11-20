@@ -160,6 +160,7 @@ docker run -p 5000:5000 -p 5001:5001 elearn-backend
 ```bash
 sudo apt update
 sudo apt install -y dotnet-runtime-8.0
+sudo apt install -y aspnetcore-runtime-8.0
 ```
 
 Verify:
@@ -172,7 +173,7 @@ dotnet --list-runtimes
 
 ```bash
 sudo mkdir -p /var/www/elearn-backend
-sudo chown -R azureuser:azureuser /var/www/elearn-backend
+sudo chown -R <vmusername>:<vmusername> /var/www/elearn-backend
 ```
 
 ### **8.3 Set Environment Variables**
@@ -185,7 +186,7 @@ Add:
 
 ```
 ASPNETCORE_ENVIRONMENT=Production
-ConnectionStrings__DefaultConnection="Server=mysqldbserverdigwiinfradev.mysql.database.azure.com;Port=3306;Database=elearn;User Id=mysqladmin;Password=Abcd1234!;SslMode=Required;"
+ConnectionStrings__DefaultConnection="Server=<servername>.mysql.database.azure.com;Port=3306;Database=elearn;User Id=<username>;Password=<password>;SslMode=Required;"
 ```
 
 Apply:
@@ -212,10 +213,10 @@ WorkingDirectory=/var/www/elearn-backend
 ExecStart=/usr/bin/dotnet /var/www/elearn-backend/ElearnBackend.dll
 Restart=always
 RestartSec=10
-User=azureuser
+User=<vmusername>
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=ASPNETCORE_URLS=http://0.0.0.0:5000
-Environment="ConnectionStrings__DefaultConnection=Server=mysqldbserverdigwiinfradev.mysql.database.azure.com;Port=3306;Database=elearn;User Id=mysqladmin;Password=Abcd1234!;SslMode=Required;"
+Environment="ConnectionStrings__DefaultConnection=Server=<servername>.mysql.database.azure.com;Port=3306;Database=elearn;User Id=<username>;Password=<password>;SslMode=Required;"
 
 [Install]
 WantedBy=multi-user.target
